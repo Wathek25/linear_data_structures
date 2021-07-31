@@ -1,0 +1,61 @@
+ALGORITHM array_solution2
+VAR
+    i,j,n1,n2,sumSet1,sumSet2 : INTEGER
+    set1 : ARRAY_OF INTEGER [n1]
+    set2 : ARRAY_OF INTEGER [n2]
+    test : BOOLEAN
+    totalSums : INTEGER := 0
+BEGIN
+    REPEAT
+        Write ("Give the length of set1")
+        Read(set1)
+        Write ("Give the length of set2")
+        Read(set2)
+    UNTIL (n1 > 0 && n2 > 0)
+
+    //inserting elements in set1
+    FOR i FROM 0 TO n1-1 STEP 1  DO
+        Write("Give the element of set1")
+        Read(set1)
+    END_FOR
+
+    //inserting elements in set2
+    FOR j FROM 0 TO n2-1 STEP 1  DO
+        Write("Give the element of set2")
+        Read(set2)
+    END_FOR
+
+    //overlapping elements of set1
+    sumSet1 := 0
+    FOR i FROM 0 TO n1-1 STEP 1 DO
+        test := TRUE
+        FOR j FROM 0 TO n2-1 STEP 2  DO
+            IF (set1[i] = set2[j]) THEN
+                test := FALSE
+                BREAK
+            END_IF
+        END_FOR
+        IF (NOT test) THEN
+            sumSet1 := sumSet1 + set1[i] //according to the exemple in the course the result of sumSet1 := 13 + 10 = 23
+        END_IF
+    END_FOR
+
+    //overlapping elements of set1
+    sumSet2 := 0
+    FOR i FROM 0 TO n2-1 STEP 1 DO
+        test := TRUE
+        FOR j FROM 0 TO n1-1 STEP 2  DO
+            IF (set2[i] = set1[j]) THEN
+                test := FALSE
+                BREAK
+            END_IF
+        END_FOR
+        IF (NOT test) THEN
+            sumSet2 := sumSet2 + set2[i] //according to the exemple in the course the result of sumSet2 := 13 + 10 = 23
+        END_IF
+    END_FOR
+    
+    //Final output    
+    totalSums := sumSet1 + sumSet2 // if we combine the the overlapping elements of each set the result should be = 46
+    Write (totalSums)
+END   
