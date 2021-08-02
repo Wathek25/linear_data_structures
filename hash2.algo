@@ -17,4 +17,12 @@ BEGIN
     FOR i FROM 0 TO n2-1 STEP 1  DO
         hash2.insert(set2[i],1)
     END_FOR
+
+    // getkeyval : lets suppose it a predefined function
+    newArray := hash1.getkeyval();
+    sum := 0
+    FOR i FROM 0 TO newArray STEP 1  DO
+        IF (hash1.get(newArray[i] > 1)) THEN
+        sum := sum + newArray[i] 
+    END_FOR
 END
