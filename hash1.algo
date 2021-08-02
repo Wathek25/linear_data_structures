@@ -3,7 +3,7 @@ VAR
     hash1 : HASH_TABLE <integer,integer>
     set1 : ARRAY_OF INTEGER [n1]
     set2 : ARRAY_OF INTEGER [n2]
-    i,n1,n2 : INTEGER
+    i,n1,n2,sum : INTEGER
 BEGIN
 
     FOR i FROM 0 TO n1-1 STEP 1  DO
@@ -16,5 +16,13 @@ BEGIN
         ELSE 
             hash1.insert(set2[i],1)
         END_IF
+    END_FOR
+
+    // getkeyval : lets suppose it a predefined function
+    newArray := hash1.getkeyval();
+    sum := 0
+    FOR i FROM 0 TO newArray STEP 1  DO
+        IF (hash1.get(newArray[i] = 1)) THEN
+        sum := sum + newArray[i] 
     END_FOR
 END
